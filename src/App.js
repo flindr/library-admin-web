@@ -13,7 +13,7 @@ function App() {
     };
 
     const fetchDataFromApi = async () => {
-        const result = await fetch("https://library-api20210419111151.azurewebsites.net/api/books", {
+        const result = await fetch(process.env.REACT_APP_API_URL, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -29,7 +29,7 @@ function App() {
             <header className="App-header">
                 <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                    Edit <code>src/App.js</code> and save to reload.
+                    This is the {process.env.NODE_ENV} environment
                 </p>
                 <a
                     className="App-link"
