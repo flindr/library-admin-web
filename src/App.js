@@ -13,7 +13,7 @@ function App() {
     };
 
     const fetchDataFromApi = async () => {
-        const result = await fetch(process.env.REACT_APP_API_URL, {
+        const result = await fetch(process.env.REACT_APP_API_URL + "books", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
