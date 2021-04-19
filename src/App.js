@@ -8,11 +8,12 @@ function App() {
     const [books, setBooks] = useState([]);
 
     const onResponse = (response) => {
+        console.log(response);
         setToken(response.tokenId);
     };
 
     const fetchDataFromApi = async () => {
-        const result = await fetch("https://localhost:44325/api/books", {
+        const result = await fetch("https://library-api20210419111151.azurewebsites.net/api/books", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
