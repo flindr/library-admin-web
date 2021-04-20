@@ -1,16 +1,11 @@
-import logo from "./logo.svg";
+import { ReactComponent as Logo } from "./logo.svg";
 import "./App.css";
+import Login from "./Login.js";
 import { useState } from "react";
-import GoogleLogin from "react-google-login";
 
 function App() {
     const [token, setToken] = useState("");
     const [books, setBooks] = useState([]);
-
-    const onResponse = (response) => {
-        console.log(response);
-        setToken(response.tokenId);
-    };
 
     const fetchDataFromApi = async () => {
         const result = await fetch(process.env.REACT_APP_API_URL + "books", {
@@ -27,24 +22,13 @@ function App() {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
                 <p>
-                    This is the {process.env.NODE_ENV} environment
+                    This is the{" "}
+                    <span className="emphasis">{process.env.NODE_ENV}</span>{" "}
+                    environment
                 </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-                <GoogleLogin
-                    clientId={
-                        "935364814037-vc5cj146voc1f14jsqh5tgeqciorq324.apps.googleusercontent.com"
-                    }
-                    onSuccess={onResponse}
-                ></GoogleLogin>
+                <Login onLogin={(token) => setToken(token)}></Login>
+
                 {token && (
                     <button onClick={fetchDataFromApi}>Hämta data</button>
                 )}
