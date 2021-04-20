@@ -1,4 +1,3 @@
-import { ReactComponent as Logo } from "./logo.svg";
 import "./App.css";
 import Login from "./Login.js";
 import { useState } from "react";
